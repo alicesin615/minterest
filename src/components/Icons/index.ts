@@ -1,0 +1,1 @@
+export {MinterestIcon} from './Icons'
