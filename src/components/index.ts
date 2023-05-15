@@ -1,3 +1,5 @@
 export {Navbar} from './Navbar'
 export {MinterestIcon} from './Icons'
+import { MinterestLogo } from './MinterestLogo'
+export {Card} from './Card'
 export {Button} from './Buttons'
