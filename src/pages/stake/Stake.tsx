@@ -1,3 +1,10 @@
+import { useLocation } from 'react-router-dom';
+import { Card } from '../../components';
+
 export function Stake() {
-    return <div>Stake</div>;
+    const location = useLocation();
+    const { state } = location;
+    const { address, balance } = state || {};
+
+    return <Card />;
 }
