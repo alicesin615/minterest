@@ -9,7 +9,11 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  @apply bg-system;
+  background: #141931;
+  background: linear-gradient(326deg, #141931 1%, rgba(0,222,223,1) 50%, #141931 100%);
+  background-repeat:no-repeat;
+
+  /* @apply bg-system; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
