@@ -18,7 +18,7 @@ export function Button({
         <button
             {...rest}
             color={color}
-            className={`px-3 py-2 rounded-md leading-6 text-white bg-brand-primary shadow-slate-700 shadow border-none font-medium w-auto select-none touch-manipulation transition-all hover:bg-brand-primary-light focus:!outline-none ${
+            className={`px-3 py-1.5 text-sm rounded-md leading-6 text-white bg-brand-primary-muted shadow-slate-700 shadow border-none font-medium w-auto select-none touch-manipulation transition-all hover:bg-brand-primary-light focus:!outline-none ${
                 variant === 'primary' ? '' : ''
             } ${className ? className : ''}`}
         >

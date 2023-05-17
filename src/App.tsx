@@ -11,7 +11,7 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <Navbar />
-            <div className="p-6">
+            <div className="p-6 pt-12">
                 <Routes>
                     <Route path="/" element={<Stake />} />
                     <Route path="/mint" element={<Mint />} />
