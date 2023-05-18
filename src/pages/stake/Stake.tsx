@@ -1,10 +1,20 @@
 import { useLocation } from 'react-router-dom';
-import { Card } from '../../components';
+import { Card, PrimaryText } from '../../components';
+import { SigFigFormatter } from '../../utils';
 
 export function Stake() {
-    const location = useLocation();
-    const { state } = location;
-    const { address, balance } = state || {};
-
-    return <Card />;
+    return (
+        <div className="flex gap-8">
+            <Card title="Currently Staked" className="flex-1">
+                <div className="flex gap-2 pt-2">
+                    <div className="text-brand-primary font-medium text-2xl">
+                        {SigFigFormatter(0)}
+                    </div>
+                </div>
+            </Card>
+            <Card title="Available to Stake" className="flex-1">
+                <div>{SigFigFormatter(0)}</div>
+            </Card>
+        </div>
+    );
 }
