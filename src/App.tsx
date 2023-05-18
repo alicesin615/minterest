@@ -1,23 +1,49 @@
 import './App.css';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import {
+    WagmiConfig,
+    createConfig,
+    configureChains,
+    sepolia,
+    mainnet
+} from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
+import { infuraProvider } from 'wagmi/providers/infura';
 import { Route, Routes, Router } from 'react-router-dom';
 import { Stake } from './pages/stake';
 import { Mint } from './pages/mint';
-import { Navbar } from './components';
+import { Navbar, WalletInfo } from './components';
 
 function App() {
-    const queryClient = new QueryClient();
+    const { chains, publicClient } = configureChains(
+        [mainnet],
+        [
+            infuraProvider({ apiKey: process.env.INFURA_PUBLIC_KEY }),
+            publicProvider()
+        ]
+    );
+
+    const config = createConfig({
+        autoConnect: true,
+        connectors: [
+            new MetaMaskConnector({
+                chains
+            })
+        ],
+        publicClient
+    });
 
     return (
-        <QueryClientProvider client={queryClient}>
+        <WagmiConfig config={config}>
             <Navbar />
-            <div className="p-6 pt-12">
+            <main className="p-6 pt-12 flex flex-col gap-6 w-3/5 mx-auto">
+                <WalletInfo />
                 <Routes>
                     <Route path="/" element={<Stake />} />
                     <Route path="/mint" element={<Mint />} />
                 </Routes>
-            </div>
-        </QueryClientProvider>
+            </main>
+        </WagmiConfig>
     );
 }
 
