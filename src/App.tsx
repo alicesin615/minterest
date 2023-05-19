@@ -16,7 +16,7 @@ import { Navbar, WalletInfo } from './components';
 
 function App() {
     const { chains, publicClient } = configureChains(
-        [mainnet],
+        [sepolia],
         [
             infuraProvider({ apiKey: process.env.INFURA_PUBLIC_KEY }),
             publicProvider()
