@@ -1,7 +1,8 @@
 import { useAccount, useConnect } from 'wagmi';
 import { NavLink, NavLinkProps } from 'react-router-dom';
-import { Button } from './Buttons';
-import { middleTruncation } from '../utils';
+import { Popover } from '@mui/material';
+import { Button } from '@components/Buttons';
+import { middleTruncation } from '@utils/string-utils';
 import { MinterestLogo } from './MinterestLogo';
 
 type NabarLinkProps = NavLinkProps & {

@@ -6,8 +6,8 @@ import {
     useEnsName,
     useBalance
 } from 'wagmi';
-import { Card } from '.';
-import { SigFigFormatter } from '../utils';
+import { Card, Img } from '.';
+import { SigFigFormatter } from '@utils/number-utils';
 
 export function WalletInfo() {
     const { address } = useAccount();
@@ -21,10 +21,10 @@ export function WalletInfo() {
             <div className="flex gap-2 pt-2 text-brand-primary font-medium text-2xl">
                 {SigFigFormatter(formatted || 0)}
                 {Boolean(symbol) && (
-                    <img
-                        alt="icon"
-                        style={{ width: 28, height: 28 }}
-                        src={`/public/assets/images/coins/${symbol}.png`}
+                    <Img
+                        width={28}
+                        height={28}
+                        src={`/assets/images/coins/${symbol}.png`}
                     />
                 )}
             </div>

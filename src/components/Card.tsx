@@ -1,4 +1,4 @@
-import { PrimaryText } from '.';
+import { PrimaryText } from '@components/Text';
 
 type CardProps = React.HTMLAttributes<HTMLDivElement> & {
     title: string;

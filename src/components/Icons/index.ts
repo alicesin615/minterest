@@ -1,1 +1,1 @@
-export {MinterestIcon} from './Icons'
+export { MinterestIcon, QuestionMarkIcon } from './Icons';
