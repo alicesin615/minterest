@@ -11,8 +11,11 @@ export default {
                 'brand-primary-light': '#3fbbd9',
                 'brand-primary-muted': 'rgba(8, 145, 178,0.6)',
                 'brand-secondary': '#db2777',
+                'slate-2': '#e2e8f0',
                 'slate-3': '#cbd5e1',
-                'slate-4': '#94a3b8'
+                'slate-4': '#94a3b8',
+                'slate-5': '#64748b',
+                'slate-6': '#475569'
             },
             boxShadow: {
                 card: '0 0 10px 1px rgba(0, 0, 0, 0.25)'
