@@ -16,7 +16,7 @@ import { Navbar, WalletInfo } from './components';
 
 function App() {
     const { chains, publicClient } = configureChains(
-        [sepolia],
+        [mainnet],
         [
             infuraProvider({ apiKey: process.env.INFURA_PUBLIC_KEY }),
             publicProvider()
@@ -27,7 +27,10 @@ function App() {
         autoConnect: true,
         connectors: [
             new MetaMaskConnector({
-                chains
+                chains,
+                options: {
+                    shimDisconnect: true
+                }
             })
         ],
         publicClient
