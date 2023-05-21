@@ -18,15 +18,15 @@ export function WalletInfo() {
 
     return (
         <Card title="Wallet">
-            <div className="flex gap-2 pt-2 text-brand-primary font-medium text-2xl">
-                {SigFigFormatter(formatted || 0)}
+            <div className="flex gap-4 pt-2 text-brand-primary font-medium text-2xl items-center">
                 {Boolean(symbol) && (
                     <Img
-                        width={28}
-                        height={28}
+                        width={24}
+                        height={24}
                         src={`/assets/images/coins/${symbol}.png`}
                     />
                 )}
+                {SigFigFormatter(formatted || 0)}
             </div>
         </Card>
     );
