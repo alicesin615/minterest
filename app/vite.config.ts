@@ -9,7 +9,7 @@ export default defineConfig({
     plugins: [react()],
     define: {
         'process.env': process.env,
-        INFURA_PUBLIC_KEY: `"${process.env.INFURA_PUBLIC_KEY}"`
+        VITE_INFURA_PUBLIC_KEY: `"${process.env.VITE_INFURA_PUBLIC_KEY}"`
     },
     resolve: {
         alias: {
