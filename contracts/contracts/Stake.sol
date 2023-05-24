@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
-import '../node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol';
-
-import '../node_modules/hardhat/console.sol';
+import '@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol';
+import 'hardhat/console.sol';
 
 contract Stake {
     address public owner;
@@ -157,7 +156,10 @@ contract Stake {
             numberDays
         );
         // send ether to caller
-        payable(msg.sender).call{value: weiAmount}('');
+        (bool success /* bytes memory data */, ) = payable(msg.sender).call{
+            value: weiAmount
+        }('');
+        require(success, 'Transfer failed');
     }
 
     function calculateNumberDays(uint createdDate) public view returns (uint) {
