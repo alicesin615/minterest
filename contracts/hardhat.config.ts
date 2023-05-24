@@ -8,7 +8,7 @@ const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || '';
 const config: HardhatUserConfig = {
     solidity: '0.8.19',
     paths: {
-        artifacts: '../app/src/artifacts'
+        artifacts: '/client/src/artifacts'
     },
     networks: {
         hardhat: {
