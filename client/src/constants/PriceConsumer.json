@@ -1,0 +1,19 @@
+{
+    "address": "0xA5d51Cc1b1634e0cd549198CaD2b1f89E632e8fd",
+    "abi": [
+        {
+            "inputs": [],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "inputs": [],
+            "name": "getLatestPrice",
+            "outputs": [
+                { "internalType": "int256", "name": "", "type": "int256" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ]
+}
