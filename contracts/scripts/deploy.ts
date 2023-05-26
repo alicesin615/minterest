@@ -1,24 +1,37 @@
-import { ethers } from "hardhat";
+import { ethers } from 'hardhat';
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+    const [deployer] = await ethers.getSigners();
 
-  const lockedAmount = ethers.utils.parseEther("0.001");
+    console.log('Deploying contracts with the account:', deployer.address);
+    console.log('Account balance:', (await deployer.getBalance()).toString());
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+    const PriceConsumer = await ethers.getContractFactory('PriceConsumer');
+    const priceConsumer = await PriceConsumer.deploy();
 
-  await lock.deployed();
+    const latestPrice = await priceConsumer.getLatestPrice();
+    console.log('Latest Price:', latestPrice);
+    // const [owner] = await ethers.getSigners();
 
-  console.log(
-    `Lock with ${ethers.utils.formatEther(lockedAmount)}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
+    // const Stake = await ethers.getContractFactory('Stake', owner);
+
+    // const stake = await Stake.deploy(179012, {
+    //     value: ethers.utils.parseEther('100')
+    // });
+
+    // const Chainlink = await ethers.getContractFactory('Chainlink', owner);
+    // const chainlink = await Chainlink.deploy();
+    // await stake
+    //     .connect(owner)
+    //     .addToken('Chainlink', 'LINK', chainlink.address, 867, 1500);
+
+    // console.log('Stake:', stake.address);
+    // console.log('Chainlink:', chainlink.address);
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+    .then(() => process.exit(0))
+    .catch((error) => {
+        console.error(error);
+        process.exit(1);
+    });
