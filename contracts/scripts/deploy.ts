@@ -1,4 +1,5 @@
-import { ethers } from 'hardhat';
+import { ethers, upgrades } from 'hardhat';
+import '@openzeppelin/hardhat-upgrades';
 
 async function main() {
     const [deployer] = await ethers.getSigners();
@@ -6,27 +7,28 @@ async function main() {
     console.log('Deploying contracts with the account:', deployer.address);
     console.log('Account balance:', (await deployer.getBalance()).toString());
 
-    const PriceConsumer = await ethers.getContractFactory('PriceConsumer');
-    const priceConsumer = await PriceConsumer.deploy();
+    const PriceFeed = await ethers.getContractFactory('PriceFeed');
 
-    const latestPrice = await priceConsumer.getLatestPrice();
-    console.log('Latest Price:', latestPrice);
-    // const [owner] = await ethers.getSigners();
+    // Deploy implementation contract
+    // console.log('Deploying PriceFeed Contract...');
+    // const priceFeed = await upgrades.deployProxy(
+    //     PriceFeed,
+    //     [deployer],
+    //     {
+    //         initializer: 'initialize'
+    //     }
+    // );
+    // console.log('Price feed deployed to:', priceFeed.address);
+    // await priceFeed.deployed();
 
-    // const Stake = await ethers.getContractFactory('Stake', owner);
-
-    // const stake = await Stake.deploy(179012, {
-    //     value: ethers.utils.parseEther('100')
-    // });
-
-    // const Chainlink = await ethers.getContractFactory('Chainlink', owner);
-    // const chainlink = await Chainlink.deploy();
-    // await stake
-    //     .connect(owner)
-    //     .addToken('Chainlink', 'LINK', chainlink.address, 867, 1500);
-
-    // console.log('Stake:', stake.address);
-    // console.log('Chainlink:', chainlink.address);
+    // Upgrade proxy contract
+    const deployedProxyAddress = '0x17A7A2A8FA089Cb8764322c62B89FA44e54d2983';
+    const priceFeed = await upgrades.upgradeProxy(
+        deployedProxyAddress,
+        PriceFeed
+    );
+    console.log('Upgrading Price Feed Contract...');
+    console.log('Price feed upgraded at:', priceFeed.address);
 }
 
 main()
