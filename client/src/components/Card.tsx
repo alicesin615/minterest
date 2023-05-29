@@ -1,4 +1,4 @@
-import { PrimaryText } from '@components/Text';
+import { SecondaryText } from '@components/Text';
 
 type CardProps = React.HTMLAttributes<HTMLDivElement> & {
     title: string;
@@ -6,12 +6,12 @@ type CardProps = React.HTMLAttributes<HTMLDivElement> & {
 export const Card = ({ title, children, className, ...rest }: CardProps) => {
     return (
         <div
-            className={`shadow-card bg-slate-400/10 ring-1 ring-slate-800 rounded p-4 ${
+            className={`shadow-card bg-slate-400/10 ring-1 ring-slate-800 rounded p-6 ${
                 className ? className : ''
             }`}
             {...rest}
         >
-            <PrimaryText className="font-medium">{title}</PrimaryText>
+            <SecondaryText className="font-medium">{title}</SecondaryText>
             {children}
         </div>
     );
