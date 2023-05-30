@@ -1,11 +1,26 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 import '@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol';
+import './PriceFeed.sol';
 import 'hardhat/console.sol';
+
+// interface IPriceFeed {
+//     function getPrice(address feed) external view returns (int, uint);
+// }
 
 contract Stake {
     address public owner;
     uint public currentTokenId = 1;
+
+    // address priceFeedAddress;
+
+    // function setPriceFeedAddress(address _priceFeed) public payable {
+    //     priceFeedAddress = _priceFeed;
+    // }
+
+    // function getPriceFeed(address feed) public view returns (int, uint) {
+    //     return IPriceFeed(priceFeedAddress).getPrice(feed);
+    // }
 
     struct Token {
         uint tokenId;
@@ -45,6 +60,7 @@ contract Stake {
 
     constructor(uint currentEthPrice) payable {
         ethUsdPrice = currentEthPrice;
+        // priceFeedAddress = priceFeedAddr;
         owner = msg.sender;
     }
 
