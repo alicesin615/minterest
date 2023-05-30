@@ -1,0 +1,426 @@
+{
+    "address": "0xeac6a580a31768C4BD0adDD6d33A579115c163F1",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "currentEthPrice",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "payable",
+            "type": "constructor"
+        },
+        {
+            "inputs": [
+                { "internalType": "string", "name": "name", "type": "string" },
+                {
+                    "internalType": "string",
+                    "name": "symbol",
+                    "type": "string"
+                },
+                {
+                    "internalType": "address",
+                    "name": "tokenAddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "usdPrice",
+                    "type": "uint256"
+                },
+                { "internalType": "uint256", "name": "apy", "type": "uint256" }
+            ],
+            "name": "addToken",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                { "internalType": "uint256", "name": "apy", "type": "uint256" },
+                {
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "numberDays",
+                    "type": "uint256"
+                }
+            ],
+            "name": "calculateInterest",
+            "outputs": [
+                { "internalType": "uint256", "name": "", "type": "uint256" }
+            ],
+            "stateMutability": "pure",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "createdDate",
+                    "type": "uint256"
+                }
+            ],
+            "name": "calculateNumberDays",
+            "outputs": [
+                { "internalType": "uint256", "name": "", "type": "uint256" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "positionId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "closePosition",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "currentPositionId",
+            "outputs": [
+                { "internalType": "uint256", "name": "", "type": "uint256" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "currentTokenId",
+            "outputs": [
+                { "internalType": "uint256", "name": "", "type": "uint256" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "ethUsdPrice",
+            "outputs": [
+                { "internalType": "uint256", "name": "", "type": "uint256" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "positionId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "getPositionById",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "uint256",
+                            "name": "positionId",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "walletAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "symbol",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "createdDate",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "apy",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "tokenQuantity",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "usdValue",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "ethValue",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "open",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct Stake.Position",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getPositionIdsForAddress",
+            "outputs": [
+                { "internalType": "uint256[]", "name": "", "type": "uint256[]" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "tokenSymbol",
+                    "type": "string"
+                }
+            ],
+            "name": "getToken",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "uint256",
+                            "name": "tokenId",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "symbol",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "tokenAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "usdPrice",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "ethPrice",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "apy",
+                            "type": "uint256"
+                        }
+                    ],
+                    "internalType": "struct Stake.Token",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getTokenSymbols",
+            "outputs": [
+                { "internalType": "string[]", "name": "", "type": "string[]" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "positionId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "newCreatedDate",
+                    "type": "uint256"
+                }
+            ],
+            "name": "modifyCreatedDate",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "owner",
+            "outputs": [
+                { "internalType": "address", "name": "", "type": "address" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                { "internalType": "address", "name": "", "type": "address" },
+                { "internalType": "uint256", "name": "", "type": "uint256" }
+            ],
+            "name": "positionIdsByAddress",
+            "outputs": [
+                { "internalType": "uint256", "name": "", "type": "uint256" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                { "internalType": "uint256", "name": "", "type": "uint256" }
+            ],
+            "name": "positions",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "positionId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "walletAddress",
+                    "type": "address"
+                },
+                { "internalType": "string", "name": "name", "type": "string" },
+                {
+                    "internalType": "string",
+                    "name": "symbol",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "createdDate",
+                    "type": "uint256"
+                },
+                { "internalType": "uint256", "name": "apy", "type": "uint256" },
+                {
+                    "internalType": "uint256",
+                    "name": "tokenQuantity",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "usdValue",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "ethValue",
+                    "type": "uint256"
+                },
+                { "internalType": "bool", "name": "open", "type": "bool" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "symbol",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "tokenQuantity",
+                    "type": "uint256"
+                }
+            ],
+            "name": "stakeTokens",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                { "internalType": "string", "name": "", "type": "string" }
+            ],
+            "name": "stakedTokens",
+            "outputs": [
+                { "internalType": "uint256", "name": "", "type": "uint256" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                { "internalType": "uint256", "name": "", "type": "uint256" }
+            ],
+            "name": "tokenSymbols",
+            "outputs": [
+                { "internalType": "string", "name": "", "type": "string" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                { "internalType": "string", "name": "", "type": "string" }
+            ],
+            "name": "tokens",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                },
+                { "internalType": "string", "name": "name", "type": "string" },
+                {
+                    "internalType": "string",
+                    "name": "symbol",
+                    "type": "string"
+                },
+                {
+                    "internalType": "address",
+                    "name": "tokenAddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "usdPrice",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "ethPrice",
+                    "type": "uint256"
+                },
+                { "internalType": "uint256", "name": "apy", "type": "uint256" }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ]
+}
