@@ -6,3 +6,4 @@ export { Card } from './Card';
 export { Button } from './Buttons';
 export { PrimaryText, SecondaryText } from './Text';
 export { WalletInfo } from './WalletInfo';
+export { EmptyPlaceholder } from './EmptyPlaceholder';
