@@ -1,1 +1,6 @@
-export { MinterestIcon, QuestionMarkIcon } from './Icons';
+export {
+    MinterestIcon,
+    QuestionMarkIcon,
+    CheckIcon,
+    EmptyCheckIcon
+} from './Icons';
