@@ -59,8 +59,18 @@ button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
 }
 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .MuiPopover-paper {
     @apply p-3 border border-slate-600 !bg-slate-800 mt-2 !text-slate-200 !rounded-lg !min-w-[250px];
+}
+
+.MuiInputBase-root {
+    @apply !text-slate-100 !bg-transparent;
 }
 
 @media (prefers-color-scheme: dark) {
