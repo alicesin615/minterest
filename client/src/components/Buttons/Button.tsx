@@ -3,7 +3,7 @@ import React from 'react';
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     icon?: React.ReactNode;
     label: string;
-    variant?: 'primary' | 'secondary';
+    variant?: 'primary' | 'secondary' | 'ghost';
 };
 
 export function Button({
@@ -25,9 +25,13 @@ export function Button({
             }
             ${
                 variant === 'secondary' &&
-                'bg-brand-secondary hover:bg-brand-secondary/60'
+                'bg-brand-secondary hover:bg-brand-secondary-light'
             }
-            ${disabled && 'bg-slate-600/40 text-slate-600 pointer-events-none'}
+            ${
+                variant === 'ghost' &&
+                'bg-transparent ring-1 ring-brand-primary !text-brand-primary hover:!text-white hover:bg-brand-primary-muted'
+            }
+            ${disabled && 'bg-slate-600/40 !text-slate-600 pointer-events-none'}
             ${className ? className : ''}`}
         >
             {icon && <i className="icon">{icon}</i>}

@@ -39,7 +39,7 @@ function App() {
     return (
         <WagmiConfig config={config}>
             <Navbar />
-            <main className="p-6 pt-12 flex flex-col gap-6 w-3/5 mx-auto">
+            <main className="p-6 pt-12 flex flex-col gap-6 xl:w-3/5 md:w-full mx-auto">
                 <WalletInfo />
                 <Routes>
                     <Route path="/" element={<Stake />} />

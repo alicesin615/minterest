@@ -11,6 +11,7 @@ export default {
                 'brand-primary-light': '#3fbbd9',
                 'brand-primary-muted': 'rgba(8, 145, 178,0.6)',
                 'brand-secondary': '#db2777',
+                'brand-secondary-light': '#ec4899',
                 'slate-2': '#e2e8f0',
                 'slate-3': '#cbd5e1',
                 'slate-4': '#94a3b8',
