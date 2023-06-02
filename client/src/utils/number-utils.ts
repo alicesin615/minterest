@@ -3,3 +3,6 @@ export function SigFigFormatter(number, sigFigLimit = 5) {
         maximumSignificantDigits: sigFigLimit
     }).format(number);
 }
+export function formatApy(apy) {
+    return Boolean(apy) ? Number(apy) / 100 : 0;
+}

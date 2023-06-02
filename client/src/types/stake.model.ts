@@ -10,3 +10,15 @@ export type Token = {
     name: string;
     usdPrice: BigNumberish;
 };
+export type Position = {
+    positionId: number;
+    walletAddress: string;
+    name: string;
+    symbol: AvailableTokenSymbol;
+    createdDate: Date;
+    apy: number;
+    tokenQuantity: number;
+    usdValue: number;
+    ethValue: number;
+    open: boolean;
+};
