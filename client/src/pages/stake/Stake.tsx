@@ -9,7 +9,6 @@ import { TextField } from '@mui/material';
 import { Card } from '@components/Card';
 import { MutedText, PrimaryText, SecondaryText } from '@components/Text';
 import { Positions } from './Positions';
-import { NewPositions } from './NewPositions';
 import * as priceFeed from '@constants/PriceFeed.json';
 import * as stake from '@constants/Stake.json';
 import { PriceFeedAddress, Token, AvailableTokenSymbol } from 'src/types';
