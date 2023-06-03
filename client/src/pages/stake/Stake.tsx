@@ -5,7 +5,7 @@ import {
     useContractWrite,
     usePrepareContractWrite
 } from 'wagmi';
-import { TextField } from '@mui/material';
+import { TextField, Tooltip } from '@mui/material';
 import { Card } from '@components/Card';
 import { MutedText, PrimaryText, SecondaryText } from '@components/Text';
 import { Positions } from './Positions';
@@ -36,6 +36,7 @@ const AvailableCollateral = ({
     });
 
     const symbol = Object.keys(priceFeedAddress)?.[0]?.split('_')?.[0];
+    const isSupported = symbol === 'LINK';
 
     const formattedLatestPrice =
         Boolean(latestPriceData) &&
@@ -50,31 +51,46 @@ const AvailableCollateral = ({
 
     const { apy, name } = (tokenData as Token) || {};
     return (
-        <PrimaryText
-            className={`grid grid-cols-[30px,repeat(2,1fr),50px] items-center py-4 hover:cursor-pointer transition-all`}
-            onClick={() => setTokenToStake(symbol)}
+        <Tooltip
+            title={`${
+                isSupported
+                    ? ''
+                    : 'Token not supported on the current network. Please switch to another network.'
+            }`}
         >
-            {symbol === tokenToStake ? (
-                <CheckIcon className="text-brand-primary" />
-            ) : (
-                <EmptyCheckIcon className="text-slate-600" />
-            )}
-            <div className="flex gap-4 items-center font-medium">
-                <Img
-                    src={`/assets/images/coins/${symbol}.png`}
-                    width={36}
-                    height={36}
-                />
-                <div className="flex flex-col">
-                    {symbol}
-                    <MutedText className="text-xs">{name}</MutedText>
-                </div>
+            <div>
+                <PrimaryText
+                    className={`grid grid-cols-[30px,repeat(2,1fr),50px] items-center py-4 hover:cursor-pointer transition-all ${
+                        !isSupported && 'opacity-40 pointer-events-none'
+                    }`}
+                    onClick={() => setTokenToStake(symbol)}
+                >
+                    {symbol === tokenToStake ? (
+                        <CheckIcon className="text-brand-primary" />
+                    ) : (
+                        <EmptyCheckIcon className="text-slate-600" />
+                    )}
+                    <div className="flex gap-4 items-center font-medium">
+                        <Img
+                            src={`/assets/images/coins/${symbol}.png`}
+                            width={36}
+                            height={36}
+                        />
+                        <div className="flex flex-col">
+                            {symbol}
+                            <MutedText className="text-xs">{name}</MutedText>
+                        </div>
+                    </div>
+                    <span>
+                        {SigFigFormatter(formattedLatestPrice || 0)} USD
+                    </span>
+                    <span className="text-brand-primary">
+                        {Boolean(tokenData) && SigFigFormatter(formatApy(apy))}{' '}
+                        %
+                    </span>
+                </PrimaryText>
             </div>
-            <span>{SigFigFormatter(formattedLatestPrice || 0)} USD</span>
-            <span className="text-brand-primary">
-                {Boolean(tokenData) && SigFigFormatter(formatApy(apy))} %
-            </span>
-        </PrimaryText>
+        </Tooltip>
     );
 };
 export function Stake() {

@@ -1,3 +1,9 @@
+import { SecondaryText } from '@components/Text';
+
 export function Mint() {
-    return <div>Mint</div>;
+    return (
+        <SecondaryText className="!text-brand-primary">
+            Coming Soon!
+        </SecondaryText>
+    );
 }
