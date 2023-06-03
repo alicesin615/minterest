@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ethers, BigNumberish } from 'ethers';
 import {
     useContractRead,
@@ -9,11 +10,14 @@ import { Position } from 'src/types';
 import { MutedText, PrimaryText, SecondaryText } from '@components/Text';
 import { Img } from '@components/Img';
 import { Card } from '@components/Card';
+import { Tab } from '@components/Tab';
 import * as stake from '@constants/Stake.json';
 import { Button } from '@components/Buttons';
 
-type PositionDetailProps = { positionId: number };
-const PositionDetail = ({ positionId }: PositionDetailProps) => {
+type TabTypes = 'open' | 'close';
+
+type PositionDetailProps = { positionId: number; currentTab: TabTypes };
+const PositionDetail = ({ positionId, currentTab }: PositionDetailProps) => {
     const { data: positionData } = useContractRead({
         address: stake?.address as never,
         abi: stake?.abi,
@@ -21,7 +25,7 @@ const PositionDetail = ({ positionId }: PositionDetailProps) => {
         args: [positionId]
     });
 
-    const { symbol, name } = (positionData as Position) || {};
+    const { symbol, name, open } = (positionData as Position) || {};
 
     const { accruedInterest, numberOfDays } = useAccruedInterest(
         positionData as Position
@@ -38,6 +42,10 @@ const PositionDetail = ({ positionId }: PositionDetailProps) => {
         functionName: 'closePosition' as never,
         args: [positionId] as never
     });
+
+    if ((currentTab === 'close' && open) || (currentTab === 'open' && !open)) {
+        return null;
+    }
 
     return (
         <PrimaryText
@@ -57,32 +65,56 @@ const PositionDetail = ({ positionId }: PositionDetailProps) => {
             <span>{Number(numberOfDays) || 0}</span>
             <span>
                 {Boolean(positionData) &&
-                    ethers.formatUnits(accruedInterest as BigNumberish, 8)}
+                    ethers.formatUnits(
+                        (accruedInterest as BigNumberish) || 0,
+                        8
+                    )}
             </span>
-            <Button
-                label="Unstake"
-                variant="ghost"
-                onClick={unstakeToken}
-            ></Button>
+            {open ? (
+                <Button
+                    label="Unstake"
+                    variant="ghost"
+                    onClick={unstakeToken}
+                ></Button>
+            ) : (
+                <Button disabled label="Closed" />
+            )}
         </PrimaryText>
     );
 };
 
 export function Positions() {
+    const [currentTab, setCurrentTab] = useState<TabTypes>('open');
     return (
-        <Card title="Current Positions">
+        <Card title="Positions">
             <div className="flex flex-col pt-4">
+                <div className="flex gap-4 items-center pb-4">
+                    <Tab
+                        label="Open"
+                        onClick={() => setCurrentTab('open')}
+                        active={currentTab === 'open'}
+                    />
+                    <Tab
+                        label="Closed"
+                        onClick={() => setCurrentTab('close')}
+                        active={currentTab === 'close'}
+                    />
+                </div>
                 <MutedText className="grid grid-cols-[repeat(3,1fr),100px] gap-2 items-center py-1 [&_span]:mr-auto text-xs font-medium">
                     <span>Symbol</span>
-                    <span>Num.Days</span>
+                    <span>Num.Days Accrued</span>
                     <span>Accrued Interest</span>
                     <span></span>
                 </MutedText>
                 {(() => {
                     let positionRows = [];
-                    for (let i = 1; i < 4; i++) {
+                    for (let i = 1; i < 5; i++) {
                         positionRows.push(
-                            <PositionDetail key={i} positionId={i} />
+                            <PositionDetail
+                                key={i}
+                                positionId={i}
+                                currentTab={currentTab}
+                            />
                         );
                     }
                     return positionRows;
