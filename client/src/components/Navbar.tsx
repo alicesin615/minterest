@@ -53,6 +53,7 @@ export function Navbar() {
                 <NavbarLink label="Mint" to="/mint" />
                 {!isConnected && connectors ? (
                     <Button
+                        className="ml-auto"
                         id={metaMaskConnector?.id}
                         disabled={!metaMaskConnector?.ready}
                         onClick={() =>
