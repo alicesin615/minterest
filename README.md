@@ -48,3 +48,8 @@ Run the frontend by going into the client directory and running the commands bel
 - Wagmi
 - TailwindCSS
 
+## Demo
+![alt text](https://github.com/alicesin615/minterest/blob/master/client/public/assets/images/Preview.png?raw=true)
+
+
+
