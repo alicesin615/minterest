@@ -1,13 +1,16 @@
 {
-  "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
-    "@nomicfoundation/hardhat-verify": "^1.0.0",
-    "@openzeppelin/hardhat-upgrades": "^1.27.0",
-    "hardhat": "^2.14.0"
-  },
-  "dependencies": {
-    "@chainlink/contracts": "^0.6.1",
-    "@openzeppelin/contracts": "^4.8.3",
-    "dotenv": "^16.0.3"
-  }
+    "name": "minterest",
+    "author": "alicesin615",
+    "description": "Smart contracts for simple decentralized application",
+    "devDependencies": {
+        "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+        "@nomicfoundation/hardhat-verify": "^1.0.0",
+        "@openzeppelin/hardhat-upgrades": "^1.27.0",
+        "hardhat": "^2.14.0"
+    },
+    "dependencies": {
+        "@chainlink/contracts": "^0.6.1",
+        "@openzeppelin/contracts": "^4.8.3",
+        "dotenv": "^16.0.3"
+    }
 }
